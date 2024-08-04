@@ -13,10 +13,10 @@
 
 ### Demo Video
 
-https://github.com/user-attachments/assets/ce845001-1a57-4a43-9f87-b3f58b5325d8
+https://github.com/user-attachments/assets/644a8b87-7348-4130-a974-f89276f6c9ab
 
 
-![Semantic Nexus Demo](https://example.com/demo-video-link)
+
 
 ## Technologies Used
 
