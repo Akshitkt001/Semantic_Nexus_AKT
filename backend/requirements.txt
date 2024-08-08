@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+elasticsearch
+transformers
+pymongo
+tensorflow
+tf-keras
+numpy
+torch
+googlesearch-python
+requests
+sentencepiece
+google-generativeai

@@ -1,0 +1,50 @@
+{
+    "info": {
+      "name": "My Project API Collection",
+      "_postman_id": "12345-67890-abcde-fghij",
+      "description": "Collection for API Testing",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "GET /api/health",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:3000/api/health",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["api", "health"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "POST /api/data",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{ \"key\": \"value\" }"
+          },
+          "url": {
+            "raw": "http://localhost:3000/api/data",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "3000",
+            "path": ["api", "data"]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
+  

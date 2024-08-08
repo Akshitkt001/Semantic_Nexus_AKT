@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - elasticsearch
+      - mongodb
+    environment:
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+      - MONGODB_URI=mongodb://mongodb:27017
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_API_URL=http://backend:8000
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+      - xpack.ml.enabled=false
+      - xpack.watcher.enabled=false
+      - xpack.monitoring.collection.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9301:9200"  # Exposing Elasticsearch on port 9301 for external access
+    networks:
+      - backend-network
+
+  mongodb:
+    image: mongo:5.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mongo", "--host", "localhost", "--eval", "db.adminCommand('ping')"]
+      interval: 1m
+      timeout: 10s
+      retries: 3
+    command: mongod --bind_ip_all
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:

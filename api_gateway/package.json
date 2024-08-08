@@ -1,0 +1,14 @@
+{
+    "name": "api-gateway",
+    "version": "1.0.0",
+    "description": "API Gateway for managing requests",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "http-proxy-middleware": "^3.0.1"
+    }
+  }
+  
