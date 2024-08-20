@@ -19,7 +19,7 @@ app.add_middleware(
 )
 
 # Manually set your Gemini API key directly in the code
-api_key = "AIzaSyC-pZuHFvKldq17d9nGcrGFlWjnNC4t4e8"
+api_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXX"
 genai.configure(api_key=api_key)
 
 # Initialize the Gemini model
